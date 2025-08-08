@@ -1,17 +1,13 @@
-# app/main.py
 
 from pathlib import Path
 import time
 import re
 
-# Importa as ferramentas dos outros arquivos
 from extracao import processar_pasta, extrair_texto
 from classificar import ClassificadorDocumentos, gerar_rotulo_automatico
 from busca import criar_indice, buscar
 from chat import gerar_resposta_com_contexto
 
-# --- Configuração de Caminhos ---
-# (Esta parte continua igual)
 PASTA_PROJETO = Path(__file__).parent.parent
 PASTA_DADOS = PASTA_PROJETO / "data"
 PASTA_INDICE = PASTA_PROJETO / "indice_whoosh"
@@ -53,7 +49,6 @@ def encontrar_arquivo_correspondente(query_usuario: str) -> str | None:
         return None
 
 def preparar_ambiente():
-    # ... (esta função não muda)
     print("--- INICIANDO PREPARAÇÃO COMPLETA ---")
     if not PASTA_DADOS.is_dir() or not any(PASTA_DADOS.glob('*.pdf')):
         print(f"❌ ERRO: Pasta '{PASTA_DADOS}' não encontrada ou está vazia. Adicione seus PDFs.")
@@ -88,11 +83,8 @@ def executar_busca(query: str):
 
 
 def executar_chat(busca_arquivo: str, pergunta: str):
-    # --- MUDANÇA PRINCIPAL AQUI ---
-    # Em vez de usar a busca_arquivo diretamente, usamos nossa função inteligente
     nome_exato_arquivo = encontrar_arquivo_correspondente(busca_arquivo)
-    
-    # Se a função não encontrar um arquivo claro, ela para aqui.
+
     if not nome_exato_arquivo:
         return
 
@@ -109,9 +101,6 @@ def executar_chat(busca_arquivo: str, pergunta: str):
     resposta = gerar_resposta_com_contexto(pergunta, contexto)
     print("\n--- Resposta do Assistente ---")
     print(resposta)
-
-
-# --- Loop Principal do Menu Interativo (com texto de ajuda alterado) ---
 
 def main():
     while True:
@@ -132,7 +121,6 @@ def main():
             query = input("🔎 Digite o que você deseja buscar: ")
             executar_busca(query)
         elif escolha == '3':
-            # --- MUDANÇA NO TEXTO DE AJUDA AQUI ---
             busca_arquivo = input("📄 Digite parte do nome do arquivo (ex: lei 9394): ")
             pergunta = input("❓ Qual é a sua pergunta sobre este documento?: ")
             executar_chat(busca_arquivo, pergunta)
@@ -145,7 +133,5 @@ def main():
             time.sleep(2)
         
         input("\n-- Pressione Enter para continuar --")
-
-
 if __name__ == "__main__":
     main()
