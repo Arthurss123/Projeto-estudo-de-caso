@@ -8,7 +8,6 @@
         nome_arquivo=ID(stored=True, unique=True),
         conteudo=TEXT(stored=True)
     )
-
     def criar_indice(caminho_indice: str, documentos: dict):
         if not os.path.exists(caminho_indice):
             os.mkdir(caminho_indice)
@@ -21,14 +20,12 @@
             print(f"Indexando: {nome_arquivo}")
         
         writer.commit()
-        print("Indexação concluída.")
-
+        print("Indexação feita.")
     def buscar(caminho_indice: str, query_string: str) -> list:
         ix = open_dir(caminho_indice)
         resultados_finais = []
         
         with ix.searcher() as searcher:
-            # Usamos o QueryParser para buscar no campo 'conteudo'
             parser = QueryParser("conteudo", ix.schema)
             query = parser.parse(query_string)
             
@@ -38,9 +35,8 @@
                 resultados_finais.append({
                     "nome_arquivo": resultado['nome_arquivo'],
                     "score": resultado.score,
-                    "trecho_relevante": resultado.highlights("conteudo") # Mostra onde a busca bateu
-                })
-                
+                    "trecho_relevante": resultado.highlights("conteudo") # Mostra onde a busca foi
+                })  
         return resultados_finais
 
     def extrair_contexto(texto, termo, janela=200):
