@@ -22,10 +22,3 @@ def processar_pasta (caminho_da_pasta: str) -> dict:
       print(f"Extraindo texto de: {nome_arquivo}")
       textos_dos_documentos[nome_arquivo] = extrair_texto(caminho_completo)
   return textos_dos_documentos
-
-if __name__ == '__main__':
-    dados_extraidos = processar_pasta("data")
-    for nome, texto in dados_extraidos.items():
-        print(f"--- Documento: {nome} ---")
-        print(f"{texto[:200]}...")
-        print("-" * 20)

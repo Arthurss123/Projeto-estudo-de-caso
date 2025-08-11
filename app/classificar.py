@@ -14,7 +14,7 @@ def regra_tipo_documento(nome_arquivo: str, texto: str) -> str:
     if "resolucao" in nome or "resolução" in nome:
         return "Resolucao"
 
-    # 2️⃣ Se o nome não define, analisa cabeçalho do texto
+    #Se o nome não define, analisa cabeçalho do texto
     cabecalho = texto.upper()[:2000]
     if re.search(r"LEI\s*N[º°]", cabecalho):
         return "Lei"
@@ -36,7 +36,7 @@ class ClassificadorDocumentos:
             )
         self.classes = sorted(list(set(rotulos)))
         self.modelo.fit(textos, rotulos)
-        print("✅ Modelo treinado com sucesso!")
+        print("Modelo treinado com sucesso!")
 
     def classificar(self, nome_arquivo: str, texto: str) -> str:
         tipo_regra = regra_tipo_documento(nome_arquivo, texto)
@@ -70,26 +70,3 @@ def gerar_rotulo_automatico(nome_arquivo: str) -> str:
         return "Resolucao"
     else:
         return "Outro"
-
-if __name__ == '__main__':
-    from extracao import processar_pasta
-    dados = processar_pasta("data")
-    if not dados:
-        raise RuntimeError("❌ Nenhum arquivo processado. Verifique o caminho dos PDFs.")
-
-    textos_treino = list(dados.values())
-    nomes_arquivos_treino = list(dados.keys())
-
-    rotulos_treino = [gerar_rotulo_automatico(nome) for nome in nomes_arquivos_treino]
-    print("📌 Rótulos atribuídos automaticamente:", rotulos_treino)
-
-    classificador = ClassificadorDocumentos()
-    classificador.treinar(textos_treino, rotulos_treino)
-    classificador.salvar()
-
-    modelo_carregado = ClassificadorDocumentos.carregar_modelo()
-    if modelo_carregado:
-        print("\n📊 Resultados da classificação de todos os arquivos:")
-        for nome, texto in zip(nomes_arquivos_treino, textos_treino):
-            previsao = modelo_carregado.classificar(nome, texto)
-            print(f"📄 {nome} → {previsao}")
