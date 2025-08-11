@@ -25,15 +25,14 @@ Este projeto é uma ferramenta para extração, classificação, busca e consult
 
 1. Clone este repositório:
    ```bash
-   git clone <[url-do-repositorio](https://github.com/Arthurss123/Projeto-estudo-de-caso.git)>
-   cd <nome-da-pasta>
+   git clone <[https://github.com/Arthurss123/Projeto-estudo-de-caso.git]>
+   cd <nome-pasta-salvar>
 2. Instale as dependências:
    ```bash
    pip install -r requirements.txt
 2. Instale o Ollama e certifique-se que ele está rodando localmente:
    ```bash
    ollama run gemma:2b
-
 ## Como usar
 
 1. Preparar o ambiente (executar **uma vez** após adicionar PDFs):
