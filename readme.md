@@ -25,7 +25,7 @@ Este projeto é uma ferramenta para extração, classificação, busca e consult
 
 1. Clone este repositório:
    ```bash
-   git clone <url-do-repositorio>
+   git clone <[url-do-repositorio](https://github.com/Arthurss123/Projeto-estudo-de-caso.git)>
    cd <nome-da-pasta>
 2. Instale as dependências:
    ```bash
