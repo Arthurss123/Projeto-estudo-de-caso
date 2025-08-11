@@ -7,8 +7,8 @@ Este projeto é uma ferramenta para extração, classificação, busca e consult
 
 - **Extração de texto** de PDFs em uma pasta.
 - **Classificação automática** dos documentos em categorias (Lei, Portaria, Resolução, Outro) combinando regras e modelo ML.
-- **Indexação e busca textual** eficiente usando Whoosh, com resultados relevantes e trechos destacados.
-- **Consulta conversacional (chat)** com documentos, usando o modelo de linguagem Ollama para responder perguntas baseadas estritamente no conteúdo do PDF.
+- **Indexação e busca textual** Usando Whoosh, com resultados relevantes e trechos destacados.
+- **Consulta conversacional (chat)** com documentos, usando o modelo de linguagem Ollama para responder perguntas baseadas no conteúdo do PDF.
 
 ---
 ## Pré-requisitos
