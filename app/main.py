@@ -2,7 +2,6 @@
 from pathlib import Path
 import time
 import re
-
 from extracao import processar_pasta, extrair_texto
 from classificar import ClassificadorDocumentos, gerar_rotulo_automatico
 from busca import criar_indice, buscar
