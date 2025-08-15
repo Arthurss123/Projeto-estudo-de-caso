@@ -7,8 +7,8 @@ Este projeto é uma ferramenta para extração, classificação, busca e consult
 
 - **Extração de texto** de PDFs em uma pasta.
 - **Classificação automática** dos documentos em categorias (Lei, Portaria, Resolução, Outro) combinando regras e modelo ML.
-- **Indexação e busca textual** eficiente usando Whoosh, com resultados relevantes e trechos destacados.
-- **Consulta conversacional (chat)** com documentos, usando o modelo de linguagem Ollama para responder perguntas baseadas estritamente no conteúdo do PDF.
+- **Indexação e busca textual** Usando Whoosh, com resultados relevantes e trechos destacados.
+- **Consulta conversacional (chat)** com documentos, usando o modelo de linguagem Ollama para responder perguntas baseadas no conteúdo do PDF.
 
 ---
 ## Pré-requisitos
@@ -25,15 +25,14 @@ Este projeto é uma ferramenta para extração, classificação, busca e consult
 
 1. Clone este repositório:
    ```bash
-   git clone <url-do-repositorio>
-   cd <nome-da-pasta>
+   git clone <[https://github.com/Arthurss123/Projeto-estudo-de-caso.git]>
+   cd <nome-pasta-salvar>
 2. Instale as dependências:
    ```bash
    pip install -r requirements.txt
 2. Instale o Ollama e certifique-se que ele está rodando localmente:
    ```bash
    ollama run gemma:2b
-
 ## Como usar
 
 1. Preparar o ambiente (executar **uma vez** após adicionar PDFs):
