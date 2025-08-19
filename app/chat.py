@@ -26,8 +26,8 @@ def gerar_resposta_com_contexto(prompt: str, contexto: str) -> str:
         )
         return response['message']['content']
     except Exception as e:
-        # Fornece um erro mais detalhado
+        # Fornece detalhes do erro
         error_message = str(e)
         if "llama_new_context_with_model" in error_message:
-             return "Erro de conexão com o Ollama.."
+             return "Erro de conexão com o Ollama. Verifique se o serviço está em execução no seu computador."
         return f"Erro ao contatar o modelo LLM: {e}"
